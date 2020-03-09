@@ -11,4 +11,3 @@ npm install
 - As of 2020-03-09 all latest packages
 - Function components
 - Hooks
-# react-product-listing
