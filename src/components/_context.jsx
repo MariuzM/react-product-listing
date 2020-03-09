@@ -31,7 +31,7 @@ const storeProducts = [
   {
     id: 4,
     title: 'Utenos',
-    price: 2.99,
+    price: 1,
     inCart: false,
     color: 'blue',
     count: 0,
@@ -64,7 +64,7 @@ export const CartProvider = ({ children }) => {
   const filterDropdown = filterItems.filter(({ color }) => color !== itemColor)
 
   // console.log('state', state)
-  // console.log('basket', basket)
+  console.log('basket', basket)
 
   const addToCart = e => {
     e.inCart = true
@@ -78,16 +78,15 @@ export const CartProvider = ({ children }) => {
 
   const increment = id => {
     const selectedItem = basket.find(item => item.id === id)
-    selectedItem.count += 1
-    selectedItem.total = parseFloat((selectedItem.count * selectedItem.price).toFixed(2))
-    setTotal(prevState => [...prevState, { ...selectedItem }])
+    const totalVal = parseFloat((selectedItem.count * selectedItem.price).toFixed(2))
+    setBasket(prev => [{ ...prev[0], count: selectedItem.count + 1, total: totalVal }])
   }
 
   const decrement = id => {
     const selectedItem = basket.find(item => item.id === id)
     selectedItem.count -= 1
     selectedItem.total = parseFloat((selectedItem.count * selectedItem.price).toFixed(2))
-    setTotal(prevState => [...prevState, selectedItem])
+    setTotal(prevState => [...prevState, { ...selectedItem }])
   }
 
   const removeItem = id => {
