@@ -72,7 +72,10 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = e => {
     e.inCart = true
-    setBasket(prevState => [...prevState, { ...e, inCart: true, count: 1 }])
+    const selectedItem = e
+    selectedItem.count += 1
+    selectedItem.total = parseFloat((selectedItem.count * selectedItem.price).toFixed(2))
+    setBasket(prevState => [...prevState, { ...selectedItem, inCart: true }])
   }
 
   useEffect(() => {
