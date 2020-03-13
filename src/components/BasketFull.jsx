@@ -5,7 +5,6 @@ import { ProductContext } from './_context'
 
 export default function BasketFull({ value }) {
   const { increment, decrement, removeItem } = useContext(ProductContext)
-
   return (
     <div className="cardBox">
       {value.map(data => {

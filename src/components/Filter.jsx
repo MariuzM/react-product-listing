@@ -3,12 +3,6 @@ import { ProductContext } from './_context'
 
 export default function Filter() {
   const { filterItems, handleChangeCourse, uniqueCouse } = useContext(ProductContext)
-
-  // const color = [...new Set(state.map(q => q.color))]
-  // const test = [...color]
-  // console.log(test.toString())
-  // console.log(uniqueCouse)
-
   return (
     <div>
       <select value={filterItems.title} onChange={handleChangeCourse}>
